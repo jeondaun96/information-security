@@ -17,16 +17,18 @@ def portScanner():
     for host_now in host:
         for port_now in port:
             if s.connect_ex((host_now,port_now)):
-                    print("The IP is ", host_now, "and its ", port_now, "port is closed")
+                    pass
             else:
-                    print("The IP is ", host_now, "and its ", port_now, "port is open")
+                    print("The server IP is ", host_now)
+                    domain = socket.gethostbyaddr(host_now)[0]
+                    print("Its domain name is ", domain)
                     count=count+1
 
     stop_time = datetime.now()
     
     total_time_duration = round((stop_time - start_time).total_seconds(),1)
 
-    print("The number of server that can be my target server(available server) is ", count)
+    print("The number of server that can be my target (available server) is ", count)
 
     print("The total duration is ", total_time_duration, "sec")
     
